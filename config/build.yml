@@ -14,7 +14,7 @@ imports: []
 
 # directories to load imports from
 options:
-  - ./vendor/minond/scaffold/grunt/options
+  - ./vendor/minond/scaffold/grunt/options/
 
 # grunt task aliases
 aliases:
