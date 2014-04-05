@@ -10,13 +10,13 @@ module.exports = function (grunt) {
     _ = require('lodash');
     _.defaults = require('merge-defaults');
     glob = require('glob');
-    config = grunt.file.readYAML('config/build.yml'),
+    // or could check config/build.yml
+    config = grunt.file.readYAML('vendor/minond/scaffold/config/build.yml'),
     tasks = { config: config };
 
     // configs
     _(config.imports).each(function (file) {
-        config = _.defaults(config,
-            grunt.file.readYAML('config/build.yml'));
+        config = _.defaults(config, grunt.file.readYAML(file));
     });
 
     // options
