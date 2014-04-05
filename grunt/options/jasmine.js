@@ -3,6 +3,9 @@ module.exports = {
         src: [ '<%= config.files.js.all %>' ],
         options: {
             specs: [ '<%= config.files.tests.js %>' ],
+            junit: {
+                path: '<%= config.artifacts.tests.jasmine.junit %>'
+            },
             // template: require('grunt-template-jasmine-istanbul'),
             // templateOptions: {
             //     coverage: '<%= config.artifacts.tests.jasmine.coverage %>',
@@ -21,12 +24,11 @@ module.exports = {
             //     ],
 
             //     // requirejs template configuration:
-            //     // template: require('grunt-template-jasmine-requirejs'),
-            //     // templateOptions: {}
-            // },
-            junit: {
-                path: '<%= config.artifacts.tests.jasmine.junit %>'
-            }
+            //     template: require('grunt-template-jasmine-requirejs'),
+            //     templateOptions: {
+            //         // baseUrl: '.grunt/grunt-contrib-jasmine/src/main/js/'
+            //     }
+            // }
         }
     }
 };
