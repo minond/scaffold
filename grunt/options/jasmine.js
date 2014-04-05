@@ -21,8 +21,8 @@ module.exports = {
                 ],
 
                 // requirejs template configuration:
-                template: require('grunt-template-jasmine-requirejs'),
-                templateOptions: {}
+                // template: require('grunt-template-jasmine-requirejs'),
+                // templateOptions: {}
             },
             junit: {
                 path: '<%= config.artifacts.tests.jasmine.junit %>'
