@@ -11,7 +11,7 @@ module.exports = function (grunt, config) {
     options.jshint = JSON5.parse(read(config.files.configuration.jshint));
 
     // dafuq? getting "Bad option: 'globals'." errer with it
-    options.jshint.globals && delete options.jshint.globals;
+    options.jshint && delete options.jshint.globals;
 
     // no reporter option yet :(
     // https://github.com/yaniswang/HTMLHint/blob/master/TODO.md
