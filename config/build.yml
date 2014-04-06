@@ -47,6 +47,7 @@ aliases:
     - 'test:unit:php'
   test:unit:js:
     - 'jasmine:all'
+    - 'exec:mocha'
   test:unit:php:
     - 'phpunit:all'
   quality:
@@ -123,3 +124,13 @@ artifacts:
     - build/code/lint/scss/
     - build/tests/integration/junit
     - build/tests/integration/html
+
+binaries:
+  mocha: node_modules/.bin/mocha
+  scsslint: scss-lint
+  phpmd: bin/phpmd
+  phpcpd: bin/phpcpd
+  phpdcd: bin/phpdcd
+  behat: bin/behat
+  apigen: apigen
+  phantomjs: node_modules/.bin/phantomjs
