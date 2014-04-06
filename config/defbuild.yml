@@ -56,17 +56,21 @@ aliases:
   quality:
     - 'prepare'
     - 'complexity:all'
+    - 'htmlhint:all'
     - 'jshint:all'
     - 'jshint:report'
     - 'exec:scsslint'
     - 'exec:phpcpd'
-    - 'exec:phpcpd'
+    - 'exec:phpdcd'
     - 'exec:phpmd'
     - 'phpcs:all'
 
 # application's file/directory structure. should be broken up into type or
 # foraat of the file
 files:
+  views:
+    dir: app/views
+    all: app/views/**/*.html
   js:
     dir: app/assets
     all: app/assets/**/*.js
@@ -88,6 +92,7 @@ files:
   configuration:
     phpunit: vendor/minond/scaffold/config/phpunit.xml
     jshint: vendor/minond/scaffold/config/jshintrc.json
+    htmlhint: vendor/minond/scaffold/config/htmlhintrc.json
 
 # output destination of any build task. should be grouped by the type of the
 # task that generates the output (ie. a test, auto documentation, etc.)
