@@ -1,5 +1,6 @@
 {
-    // downloaded from: https://gist.github.com/haschek/2595796
+    // https://gist.github.com/haschek/2595796
+    // http://www.jshint.com/docs/options/
     // can't parse this file? use JSON5!
 
     // --------------------------------------------------------------------
@@ -42,6 +43,8 @@
     "plusplus"      : true,     // Prohibit use of `++` & `--`.
     "regexp"        : true,     // Prohibit `.` and `[^...]` in regular expressions.
     "undef"         : true,     // Require all non-global variables be declared before they are used.
+    "unused"        : true,     // This option warns when you define and never use your variables.
+    "freeze"        : true,     // This options prohibits overwriting prototypes of native objects such as Array, Date and so on.
     "strict"        : true,     // Require `use strict` pragma in every file.
     "trailing"      : true,     // Prohibit trailing whitespaces.
     "maxlen"        : 120,      // This option lets you set the maximum length of a line.
@@ -77,6 +80,8 @@
     "sub"           : false,    // Tolerate all forms of subscript notation besides dot notation e.g. `dict['key']` instead of `dict.key`.
     "supernew"      : false,    // Tolerate `new function () { ... };` and `new Object;`.
     "validthis"     : false,    // Tolerate strict violations when the code is running in strict mode and you use this in a non-constructor function.
+    "notypeof"      : false,    // This option suppresses warnings about invalid typeof operator values.
+    "quotmark"      : true,     // This option enforces the consistency of quotation marks used throughout your code. (true means consisten quotes)
 
     // == Environments ====================================================
     //
