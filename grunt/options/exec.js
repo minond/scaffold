@@ -67,9 +67,15 @@ module.exports = {
     },
     mocha: {
         cmd: join(
-            '<%= config.binaries.mocha %>',
-            '<%= config.files.tests.dir %>',
-            '--reporter spec'
+            '<%= config.binaries.istanbul %>',
+            'cover',
+            '<%= config.binaries._mocha %>',
+            '--report lcov',
+            '--dir <%= config.artifacts.tests.mocha.report %>',
+            '--',
+            '-R',
+            'spec',
+            '<%= config.files.tests.dir %>'
         )
     }
 };

@@ -112,6 +112,8 @@ artifacts:
       junit: build/tests/js/junit
       report: build/tests/js/report/
     # does not check these settings. see config/phpunit.xml
+    mocha:
+      report: build/tests/js/report/
     phpunit:
       coverage: ../build/tests/php/coverage.xml
       junit: ../build/tests/php/junit/junit.xml
@@ -127,6 +129,7 @@ artifacts:
 
 binaries:
   mocha: node_modules/.bin/mocha
+  _mocha: node_modules/.bin/_mocha
   scsslint: scss-lint
   phpmd: bin/phpmd
   phpcpd: bin/phpcpd
@@ -134,3 +137,4 @@ binaries:
   behat: bin/behat
   apigen: apigen
   phantomjs: node_modules/.bin/phantomjs
+  istanbul: node_modules/.bin/istanbul
