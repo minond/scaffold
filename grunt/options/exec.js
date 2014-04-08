@@ -1,10 +1,12 @@
+'use strict';
+
 /**
  * array join helper
  * @param {string} strings*
  * @return {string} joined string
  */
 function join () {
-    return [].splice.call(arguments, 0).join(' ')
+    return [].splice.call(arguments, 0).join(' ');
 }
 
 module.exports = {
