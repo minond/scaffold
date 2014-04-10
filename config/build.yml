@@ -84,8 +84,12 @@ files:
       - public/vendor/foundation/scss
   tests:
     dir: tests
-    js: tests/**/*.js
     php: tests/**/*.php
+    js:
+      all: tests/unit/**/*.js
+      helpers: tests/helpers/*_helper.js
+      vendor:
+        - tests/mocks/*_mock.js
   configuration:
     phpunit: vendor/minond/scaffold/config/phpunit.xml
     jshint: vendor/minond/scaffold/config/jshintrc.json

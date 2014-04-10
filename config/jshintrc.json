@@ -126,7 +126,5 @@
         "it"
     ],
     "indent"        : 4,        // Specify indentation spacing
-    "globals": [
-        "User"
-    ]
+    "globals": []
 }

@@ -4,7 +4,7 @@ module.exports = {
     all: {
         src: [
             '<%= config.files.js.all %>',
-            '<%= config.files.tests.js %>'
+            '<%= config.files.tests.js.all %>'
         ],
         options: {
             checkstyleXML: '<%= config.artifacts.linters.complexity %>',

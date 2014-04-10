@@ -2,7 +2,7 @@ module.exports = {
     all: {
         src: [
             '<%= config.files.js.all %>',
-            '<%= config.files.tests.js %>'
+            '<%= config.files.tests.js.all %>'
         ],
         options: {
             // http://jslinterrors.com/
@@ -12,7 +12,7 @@ module.exports = {
     report: {
         src: [
             '<%= config.files.js.all %>',
-            '<%= config.files.tests.js %>'
+            '<%= config.files.tests.js.all %>'
         ],
         options: {
             jshintrc: '<%= config.files.configuration.jshint %>',
