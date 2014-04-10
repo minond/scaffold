@@ -32,6 +32,7 @@ aliases:
   documentation:
     - 'yuidoc:all'
     - 'exec:apigen'
+    - 'apidoc:all'
   ci:
     - 'quality'
     - 'test'
@@ -106,6 +107,7 @@ artifacts:
     phpcs: build/code/lint/php/psr2.txt
   documentation:
     apigen: build/code/documentation/php
+    apidoc: build/code/documentation/rest
     yuidoc: build/code/documentation/js
   tests:
     behat:
@@ -130,6 +132,12 @@ artifacts:
     - build/code/lint/scss/
     - build/tests/integration/junit
     - build/tests/integration/html
+
+# additional option configuration
+option:
+  documentation:
+    yuidoc:
+      themedir: node_modules/grunt-contrib-yuidoc/node_modules/yuidocjs/themes/simple
 
 binaries:
   mocha: node_modules/.bin/mocha
