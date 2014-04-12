@@ -87,14 +87,16 @@ files:
     dir: tests
     php: tests/**/*.php
     js:
+      unit_dir: tests/unit
       all: tests/unit/**/*.js
       helpers: tests/helpers/*_helper.js
-      vendor:
-        - tests/mocks/*_mock.js
+      mocks: tests/mocks/*_mock.js
   configuration:
     phpunit: vendor/minond/scaffold/config/phpunit.xml
     jshint: vendor/minond/scaffold/config/jshintrc.json
     htmlhint: vendor/minond/scaffold/config/htmlhintrc.json
+  vendor:
+    js: []
 
 # output destination of any build task. should be grouped by the type of the
 # task that generates the output (ie. a test, auto documentation, etc.)

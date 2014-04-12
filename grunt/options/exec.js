@@ -77,7 +77,7 @@ module.exports = {
             '--',
             '-R',
             'spec',
-            '<%= config.files.tests.dir %>'
+            '<%= config.files.tests.js.unit_dir %>'
         )
     }
 };

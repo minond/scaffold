@@ -3,8 +3,11 @@ module.exports = {
         src: [ '<%= config.files.js.all %>' ],
         options: {
             specs: [ '<%= config.files.tests.js.all %>' ],
-            vendor: [ '<%= config.files.tests.js.vendor %>' ],
             helpers: [ '<%= config.files.tests.js.helpers %>' ],
+            vendor: [
+                '<%= config.files.vendor.js %>',
+                '<%= config.files.tests.js.mocks %>'
+            ],
 
             junit: {
                 path: '<%= config.artifacts.tests.jasmine.junit %>'
