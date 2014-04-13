@@ -59,6 +59,7 @@ aliases:
     - 'exec:phpdcd'
     - 'exec:phpmd'
     - 'phpcs:all'
+    - 'spell:all'
 
 # application's file/directory structure. should be broken up into type or
 # foraat of the file
@@ -94,6 +95,8 @@ files:
     htmlhint: vendor/minond/scaffold/config/htmlhintrc.json
   vendor:
     js: []
+  spelling:
+    - docs/**
 
 # output destination of any build task. should be grouped by the type of the
 # task that generates the output (ie. a test, auto documentation, etc.)
