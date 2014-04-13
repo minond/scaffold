@@ -77,7 +77,8 @@ module.exports = {
             '--',
             '-R',
             'spec',
-            '<%= config.files.tests.js.unit_dir %>'
+            '<%= config.files.tests.js.unit_dir %>',
+            '--recursive'
         )
     }
 };
