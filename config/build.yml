@@ -18,14 +18,11 @@ aliases:
     - 'build'
   prepare:
     - 'mkdir:build'
-  clean:
-    - 'rm:build'
   compile:
     - 'sass:all'
   server:
     - 'connect:server'
   build:
-    - 'prepare'
     - 'clean'
     - 'prepare'
     - 'compile'
@@ -126,7 +123,8 @@ artifacts:
       coverage: ../build/tests/php/coverage.xml
       junit: ../build/tests/php/junit/junit.xml
       report: ../build/tests/php/report
-  cleanup: build
+  cleanup:
+    - build
   create:
     - build/code/quality/php
     - build/code/quality/js

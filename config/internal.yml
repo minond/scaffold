@@ -2,7 +2,7 @@
 internal:
   required:
     - mkdir.js
-    - rm.js
+    - clean.js
     - jshint.js
     - complexity.js
 
