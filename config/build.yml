@@ -85,7 +85,7 @@ files:
     dir: tests
     php: tests/**/*.php
     js:
-      unit_dir: tests/unit
+      backend_unit_dir: tests/unit/backend
       all: tests/unit/**/*.js
       helpers: tests/helpers/*_helper.js
       mocks: tests/mocks/*_mock.js
