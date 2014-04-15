@@ -65,11 +65,11 @@ aliases:
 # foraat of the file
 files:
   views:
-    dir: app/views
-    all: app/views/**/*.html
+    dir: public/views
+    all: public/**/*.html
   js:
-    dir: app/assets
-    all: app/assets/**/*.js
+    dir: app
+    all: app/**/*.js
   php:
     dir: app
     all: app/**/*.php
