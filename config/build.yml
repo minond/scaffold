@@ -96,6 +96,7 @@ files:
   vendor:
     js: []
   spelling:
+    - README*
     - docs/**
 
 # output destination of any build task. should be grouped by the type of the
