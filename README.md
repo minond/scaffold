@@ -55,7 +55,7 @@ project and follow the scheme used in `vendor/minond/scaffold/config/build.yml`
 #### pre-processors
  * (npm) grunt-contrib-sass: ~0.7.3
 
-### for everything
+#### for everything
  * (npm) grunt-exec: ~0.4.5
 
 #### misc.
