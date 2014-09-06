@@ -27,7 +27,7 @@ project and follow the scheme used in `vendor/minond/scaffold/config/build.yml`
 
 ### packages
 #### linters
- * (composer) phpmd/phpmd" : "1.4.*
+ * (composer) phpmd/phpmd: 1.4.*
  * (composer) sebastian/phpcpd: 2.*
  * (composer) sebastian/phpdcd: 1.*
  * (composer) squizlabs/php_codesniffer: 1.*
