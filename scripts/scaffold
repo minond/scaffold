@@ -1,0 +1,48 @@
+#!/bin/bash
+
+get_scaffold() {
+    [ ! -d .git ] && git init
+    git submodule add http://github.com/minond/scaffold vendor/minond/scaffold
+    cp vendor/minond/scaffold/grunt/Gruntfile.js ./
+}
+
+copy_project_files() {
+    local type=$1
+    [ ! -f .gitignore ] && cp vendor/minond/scaffold/projects/.gitignore ./
+    [ ! -f .travis.yml ] && cp vendor/minond/scaffold/projects/travis-$type.yml .travis.yml
+    [ ! -f package.json ] && cp vendor/minond/scaffold/projects/package.json ./
+    sed -i "s/NAME/$(basename `pwd`)" package.json
+}
+
+set_build_type() {
+    [ ! -d config ] && mkdir config
+    [ ! -f config/build.yml ] && echo "type: $1" > config/build.yml
+}
+
+mkdirs() {
+    for dir in "$@"; do
+        [ ! -d "$dir" ] && mkdir "$dir"
+    done
+}
+
+case "$1" in
+    js-library)
+        echo creating js library structure
+
+        mkdirs src tests config
+        get_scaffold
+        set_build_type js-library
+        copy_project_files js-library
+
+        npm install --save-dev coveralls expect.js glob grunt grunt-complexity \
+            grunt-contrib-clean grunt-contrib-jshint grunt-exec grunt-mkdir \
+            grunt-spell istanbul json5 load-grunt-tasks lodash merge-defaults mocha
+
+        grunt
+        ;;
+
+    *)
+        echo invalid argument
+        exit 1
+        ;;
+esac
