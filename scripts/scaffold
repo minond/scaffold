@@ -11,7 +11,7 @@ copy_project_files() {
     [ ! -f .gitignore ] && cp vendor/minond/scaffold/projects/.gitignore ./
     [ ! -f .travis.yml ] && cp vendor/minond/scaffold/projects/travis-$type.yml .travis.yml
     [ ! -f package.json ] && cp vendor/minond/scaffold/projects/package.json ./
-    sed -i "s/NAME/$(basename `pwd`)" package.json
+    sed -i "s/NAME/$(basename `pwd`)/" package.json
 }
 
 set_build_type() {
@@ -28,6 +28,7 @@ mkdirs() {
 case "$1" in
     js-library)
         echo creating js library structure
+        set -x
 
         mkdirs src tests config
         get_scaffold
