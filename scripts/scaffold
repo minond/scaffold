@@ -25,15 +25,23 @@ mkdirs() {
     done
 }
 
+cdmkdir() {
+    local dir=$1
+    [ ! -d $dir ] && mkdir $dir
+    cd $dir
+}
+
 case "$1" in
-    js-library)
+    node-module)
         echo creating js library structure
         set -x
 
+        [ ! -z "$2" ] && cdmkdir $2
+
         mkdirs src tests config
         get_scaffold
-        set_build_type js-library
-        copy_project_files js-library
+        set_build_type node-module
+        copy_project_files node-module
 
         npm install --save-dev coveralls expect.js glob grunt grunt-complexity \
             grunt-contrib-clean grunt-contrib-jshint grunt-exec grunt-mkdir \
