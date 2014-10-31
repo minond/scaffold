@@ -3,7 +3,7 @@ var DEFAULT_CONFIG = 'vendor/minond/scaffold/config/build.yml',
 
 /**
  * no need to edit this file. configured by config/build.yml
- * http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html
+ * https://github.com/minond/scaffold
  */
 module.exports = function (grunt) {
     'use strict';
