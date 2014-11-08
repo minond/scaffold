@@ -51,7 +51,9 @@ case "$1" in
         ;;
 
     *)
-        echo invalid argument
+        echo invalid argument. supported scaffolds:
+        echo - node-module
+
         exit 1
         ;;
 esac
