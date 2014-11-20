@@ -12,6 +12,7 @@ JS_COMPLEXITY_FILES = $(JS_FILES)
 JS_JSHINT_FLAGS = --config $(CONFIG_DIR)/jshintrc.json
 JS_JSHINT_FILES = $(JS_FILES) $(JS_TESTS)
 
+JS_JSCS_FLAGS = --config $(CONFIG_DIR)/jscsrc.json
 JS_JSCS_FILES = $(JS_FILES) $(JS_TESTS)
 
 .PHONY: js-configure js-complexity js-test js-test-coverage js-hint \
@@ -25,7 +26,7 @@ js-configure:
 	$(NPM) i --save-dev jscs@1.7.3
 
 js-jscs:
-	$(NPM_BIN)/jscs $(JS_JSCS_FILES)
+	$(NPM_BIN)/jscs $(JS_JSCS_FLAGS) $(JS_JSCS_FILES)
 
 js-jshint:
 	$(NPM_BIN)/jshint $(JS_JSHINT_FLAGS) $(JS_JSHINT_FILES)
