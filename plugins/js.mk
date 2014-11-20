@@ -15,8 +15,8 @@ JS_JSHINT_FILES = $(JS_FILES) $(JS_TESTS)
 JS_JSCS_FLAGS = --config $(CONFIG_DIR)/jscsrc.json
 JS_JSCS_FILES = $(JS_FILES) $(JS_TESTS)
 
-.PHONY: js-configure js-complexity js-test js-test-coverage js-hint \
-    js-coveralls js-jscs
+.PHONY: js-complexity js-configure js-coveralls js-jscs js-jshint js-lint \
+    js-mocha js-mocha-coverage js-test js-test-coverage
 
 js-configure:
 	$(NPM) i --save-dev istanbul@0.3.2
