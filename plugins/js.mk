@@ -24,23 +24,32 @@ js-configure:
 	$(NPM) i --save-dev complexity-report@1.0.6
 	$(NPM) i --save-dev jshint@2.5.10
 	$(NPM) i --save-dev jscs@1.7.3
+	$(NPM) i --save-dev coveralls@2.11.2
+	$(NPM) i --save-dev expect.js@0.3.1
 
+# https://github.com/jscs-dev/node-jscs
 js-jscs:
 	$(NPM_BIN)/jscs $(JS_JSCS_FLAGS) $(JS_JSCS_FILES)
 
+# http://www.jshint.com/docs/
 js-jshint:
 	$(NPM_BIN)/jshint $(JS_JSHINT_FLAGS) $(JS_JSHINT_FILES)
 
+# http://jscomplexity.org/complexity
 js-complexity:
 	$(NPM_BIN)/cr $(JS_COMPLEXITY_FLAGS) $(JS_COMPLEXITY_FILES)
 
+# http://mochajs.org/
 js-mocha:
 	$(NPM_BIN)/mocha $(JS_TESTS)
 
+# https://github.com/gotwarlost/istanbul
 js-mocha-coverage:
 	$(NPM_BIN)/istanbul cover $(NPM_BIN)/_mocha --report lcov \
 		--dir $(JS_TESTS_OUTPUT) -- -R spec $(JS_TESTS) --recursive
 
+# https://coveralls.zendesk.com/hc/en-us
+# https://www.npmjs.org/package/coveralls
 js-coveralls:
 	cat $(JS_TESTS_OUTPUT)/lcov.info | $(NPM_BIN)/coveralls
 
