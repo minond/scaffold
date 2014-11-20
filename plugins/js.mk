@@ -4,7 +4,7 @@ NPM_BIN = `$(NPM) bin`
 JS_FILES = src/**.js
 JS_TESTS = tests/**.js
 
-JS_TESTS_OUTPUT = build/tests/js/report
+JS_TESTS_OUTPUT = $(BUILD_DIR)/tests/js/report
 
 JS_COMPLEXITY_FLAGS = --format markdown
 JS_COMPLEXITY_FILES = $(JS_FILES)
