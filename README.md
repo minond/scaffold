@@ -1,5 +1,5 @@
 `scaffold` - scaffolded build tasks using [GNU
-Make](http://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_1.html).
+make](http://www.gnu.org/software/make/manual/make.html).
 
 #### install
 
