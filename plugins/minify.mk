@@ -1,4 +1,4 @@
-include plugins/exec.mk
+include plugins/base.mk
 
 .PHONY: minify-cofigure
 

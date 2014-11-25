@@ -1,4 +1,4 @@
-include plugins/exec.mk
+include plugins/base.mk
 
 JS_FILES = src/**.js
 JS_TESTS = tests/**.js
