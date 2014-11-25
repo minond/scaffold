@@ -18,11 +18,13 @@ run linters and unit tests, you could do something like this:
 -include vendor/minond/scaffold/plugins/js.mk
 
 install:
-	git submodule update --init
 	npm install
 
-lint: js-lint
-test: js-test
+dependencies:
+	git submodule update --init
+
+lint: dependencies js-lint
+test: dependencies js-test
 ```
 
 now you can run `make test` or `make lint` and this will run tasks defined as
