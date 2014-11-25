@@ -15,7 +15,6 @@ for example, let's say you have a javascript application in which you want to
 run linters and unit tests, you could do something like this:
 
 ```Makefile
--include vendor/minond/scaffold/plugins/std.mk
 -include vendor/minond/scaffold/plugins/js.mk
 
 install:
@@ -32,14 +31,12 @@ for details)
 
 #### conventions
 
-1. you always need to include include the `plugins/std.mk` plugin, as this
-   inclues standard configuration and some generic targes.
-
-2. plugins should provide a `[name]-configure` target that does anything needed
+1. plugins should provide a `[name]-configure` target that does anything needed
    to use the plugin. this includes things such as installing dependencies
-   or outputting instructions. `make [name]-configure` should only be ran
-   once per project, so if it does things that are environment specific, this
-   needs to go under another command/target.
+   or outputting instructions on how to do so. `make [name]-configure` should
+   only be ran once per project, so if it does things that are environment
+   specific, or need to be repeated, this needs to go under another target.
 
-3. always roll your own `install` target that downloads the `scaffold` project
-   and puts it in the right location. I preffer to use submodule for this.
+2. always roll your own `dependencies` target that downloads the `scaffold`
+   project and puts it in the right location. I preffer to use submodule for
+   this. (see [install](#install) section)
