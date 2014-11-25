@@ -1,5 +1,4 @@
-NPM = npm
-NPM_BIN = `$(NPM) bin`
+include plugins/exec.mk
 
 JS_FILES = src/**.js
 JS_TESTS = tests/**.js
