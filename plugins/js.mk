@@ -1,7 +1,7 @@
 include plugins/base.mk
 
-JS_FILES = src/**.js
-JS_TESTS = tests/**.js
+JS_FILES = $(SOURCE_DIR)/**.js
+JS_TESTS = $(TEST_DIR)/**.js
 
 JS_TESTS_OUTPUT = $(BUILD_DIR)/tests/js/report
 
