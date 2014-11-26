@@ -1,4 +1,4 @@
-include plugins/base.mk
+include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 
 .PHONY: minify-cofigure
 

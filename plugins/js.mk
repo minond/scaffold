@@ -1,4 +1,4 @@
-include plugins/base.mk
+include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 
 JS_FILES = $(SOURCE_DIR)/**.js
 JS_TESTS = $(TEST_DIR)/**.js
