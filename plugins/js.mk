@@ -24,7 +24,6 @@ js-configure:
 	$(NPM) i --save-dev jshint@2.5.10
 	$(NPM) i --save-dev jscs@1.7.3
 	$(NPM) i --save-dev coveralls@2.11.2
-	$(NPM) i --save-dev expect.js@0.3.1
 
 # https://github.com/jscs-dev/node-jscs
 js-jscs:
