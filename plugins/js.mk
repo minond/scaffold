@@ -1,7 +1,7 @@
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 
 JS_FILES = $(SOURCE_DIR)/**.js
-JS_TESTS = $(TEST_DIR)/**.js
+JS_TESTS = $(TEST_DIR)/**_test.js
 
 JS_TESTS_OUTPUT = $(BUILD_DIR)/tests/js/report
 
