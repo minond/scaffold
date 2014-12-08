@@ -1,18 +1,16 @@
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 
-JS_FILES = $(SOURCE_DIR)/**.js
-JS_TESTS = $(TEST_DIR)/**.js
-
 JS_TESTS_OUTPUT = $(BUILD_DIR)/tests/js/report
+JS_MOCHA_UNIT_TEST_FILES = $(TEST_DIR)/*_test.js
 
 JS_COMPLEXITY_FLAGS = --format markdown
-JS_COMPLEXITY_FILES = $(JS_FILES)
+JS_COMPLEXITY_FILES = $(SOURCE_DIR)
 
 JS_JSHINT_FLAGS = --config $(CONFIG_DIR)/jshintrc.json
-JS_JSHINT_FILES = $(JS_FILES) $(JS_TESTS)
+JS_JSHINT_FILES = $(SOURCE_DIR) $(TEST_DIR)
 
 JS_JSCS_FLAGS = --config $(CONFIG_DIR)/jscsrc.json
-JS_JSCS_FILES = $(JS_FILES) $(JS_TESTS)
+JS_JSCS_FILES = $(SOURCE_DIR) $(TEST_DIR)
 
 .PHONY: js-complexity js-configure js-coveralls js-jscs js-jshint js-lint \
     js-mocha js-mocha-coverage js-test js-test-coverage
@@ -39,12 +37,12 @@ js-complexity:
 
 # http://mochajs.org/
 js-mocha:
-	$(NPM_BIN)/mocha $(JS_TESTS)
+	$(NPM_BIN)/mocha $(JS_MOCHA_UNIT_TEST_FILES)
 
 # https://github.com/gotwarlost/istanbul
 js-mocha-coverage:
 	$(NPM_BIN)/istanbul cover $(NPM_BIN)/_mocha --report lcov \
-		--dir $(JS_TESTS_OUTPUT) -- -R spec $(JS_TESTS) --recursive
+		--dir $(JS_TESTS_OUTPUT) -- -R spec $(JS_MOCHA_UNIT_TEST_FILES) --recursive
 
 # https://coveralls.zendesk.com/hc/en-us
 # https://www.npmjs.org/package/coveralls
