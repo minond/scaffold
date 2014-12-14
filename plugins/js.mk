@@ -3,6 +3,10 @@ include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 JS_TESTS_OUTPUT = $(BUILD_DIR)/tests/js/report
 JS_MOCHA_UNIT_TEST_FILES = $(TEST_DIR)/*_test.js
 
+JS_ISTANBUL_UNIT_TEST_FILES ?= $(JS_MOCHA_UNIT_TEST_FILES)
+JS_ISTANBUL_FLAGS ?= --report lcov --dir $(JS_TESTS_OUTPUT)
+JS_ISTANBUL_EXTRA_FLAGS ?=
+
 JS_COMPLEXITY_FLAGS = --format markdown
 JS_COMPLEXITY_FILES = $(SOURCE_DIR)
 
@@ -41,8 +45,10 @@ js-mocha:
 
 # https://github.com/gotwarlost/istanbul
 js-mocha-coverage:
-	$(NPM_BIN)/istanbul cover $(NPM_BIN)/_mocha --report lcov \
-		--dir $(JS_TESTS_OUTPUT) -- -R spec $(JS_MOCHA_UNIT_TEST_FILES) --recursive
+	$(NPM_BIN)/istanbul cover $(NPM_BIN)/_mocha \
+		$(JS_ISTANBUL_FLAGS) \
+		$(JS_ISTANBUL_EXTRA_FLAGS) \
+		-- $(JS_ISTANBUL_UNIT_TEST_FILES)
 
 # https://coveralls.zendesk.com/hc/en-us
 # https://www.npmjs.org/package/coveralls
