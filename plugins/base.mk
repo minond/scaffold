@@ -8,7 +8,9 @@ TEST_DIR = test
 NPM = npm
 NPM_BIN = `$(NPM) bin`
 
-.PHONY: clean
+.PHONY: clean all
+
+all:: clean
 
 clean::
 	@if [ -d $(BUILD_DIR) ]; then rm -r $(BUILD_DIR); fi
