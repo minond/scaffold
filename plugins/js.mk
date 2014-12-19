@@ -20,12 +20,12 @@ JS_JSCS_FILES = $(SOURCE_DIR) $(TEST_DIR)
     js-mocha js-mocha-coverage js-test js-test-coverage
 
 js-configure:
-	$(NPM) i --save-dev istanbul@0.3.2
-	$(NPM) i --save-dev mocha@2.0.1
-	$(NPM) i --save-dev complexity-report@1.0.6
-	$(NPM) i --save-dev jshint@2.5.10
-	$(NPM) i --save-dev jscs@1.7.3
-	$(NPM) i --save-dev coveralls@2.11.2
+	$(NPM) i --save-dev istanbul@0.3.2 \
+		mocha@2.0.1 \
+		complexity-report@1.0.6 \
+		jshint@2.5.10 \
+		jscs@1.7.3 \
+		coveralls@2.11.2
 
 # https://github.com/jscs-dev/node-jscs
 js-jscs:
