@@ -1,4 +1,4 @@
-BASE_DIR = vendor/minond/scaffold
+BASE_DIR = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../
 CONFIG_DIR = $(BASE_DIR)/config
 BUILD_DIR = build
 
