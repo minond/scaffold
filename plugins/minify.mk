@@ -6,5 +6,5 @@ JSMIN = $(NPM_BIN)/jsmin
 CSSMIN = $(NPM_BIN)/cssmin
 HTMLMIN = $(NPM_BIN)/htmlmin
 
-minify-cofigure:
+minify-configure:
 	$(NPM) i --save jsmin cssmin htmlmin
