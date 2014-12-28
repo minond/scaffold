@@ -10,7 +10,7 @@ NPM_BIN = `$(NPM) bin`
 
 .PHONY: clean all
 
-all:: clean
+default::
 
 clean::
-	@if [ -d $(BUILD_DIR) ]; then rm -r $(BUILD_DIR); fi
+	-rm -r $(BUILD_DIR)

@@ -58,3 +58,6 @@ js-coveralls:
 js-test: js-mocha
 js-test-coverage: js-mocha-coverage
 js-lint: js-complexity js-jshint js-jscs
+
+clean::
+	-rm -r $(BUILD_DIR) node_modules
