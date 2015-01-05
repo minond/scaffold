@@ -2,6 +2,7 @@ include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 
 JS_TESTS_OUTPUT = $(BUILD_DIR)/tests/js/report
 JS_MOCHA_UNIT_TEST_FILES = $(TEST_DIR)/*_test.js
+JS_MOCHA_INTEGRATION_TEST_FILES = $(TEST_DIR)/integration/*.js
 
 JS_ISTANBUL_UNIT_TEST_FILES ?= $(JS_MOCHA_UNIT_TEST_FILES)
 JS_ISTANBUL_FLAGS ?= --report lcov --dir $(JS_TESTS_OUTPUT)
@@ -42,6 +43,9 @@ js-complexity:
 # http://mochajs.org/
 js-mocha:
 	$(NPM_BIN)/mocha $(JS_MOCHA_UNIT_TEST_FILES)
+
+js-mocha-integration:
+	@$(NPM_BIN)/mocha --timeout 20000 $(JS_MOCHA_INTEGRATION_TEST_FILES)
 
 # https://github.com/gotwarlost/istanbul
 js-mocha-coverage:
