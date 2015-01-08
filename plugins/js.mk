@@ -108,10 +108,3 @@ help::
 	@echo "  \$$js_jscs_extra_flags               # user jscs flags ($(js_jscs_extra_flags))"
 	@echo "  \$$js_jscs_files                     # jscs files globl ($(js_jscs_files))"
 	@echo "  \$$js_jscs_report_file               # jscs report file name ($(js_jscs_report_file))"
-js_jshint_flags = --config $(config_dir)/jshintrc.json
-js_jshint_files = $(source_dir) $(test_dir)
-
-js_jscs_flags = --config $(config_dir)/jscsrc.json --reporter inline
-js_jscs_extra_flags ?=
-js_jscs_files = $(source_dir) $(test_dir)
-js_jscs_report_file = $(build_dir)/source/js/complexity.md
