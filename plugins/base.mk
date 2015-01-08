@@ -14,8 +14,8 @@ npm = npm
 npm_bin = `$(npm) bin`
 
 # output helpers
-ok = "`tput setaf 150`  ✔`tput sgr0`"
-error = "`tput setaf 1`  ×`tput sgr0`"
+pass = @echo "  `tput setaf 150`✔`tput sgr0` $1"
+fail = @echo "  `tput setaf   1`×`tput sgr0` $1"
 
 .PHONY: clean default
 
