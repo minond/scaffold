@@ -16,6 +16,7 @@ npm_bin = `$(npm) bin`
 # output helpers
 pass = @echo "  `tput setaf 150`✔`tput sgr0` $1"
 fail = @echo "  `tput setaf   1`×`tput sgr0` $1"
+work = @echo "  `tput setaf 226`-`tput sgr0` $1"
 
 .PHONY: clean default
 
@@ -24,3 +25,10 @@ default::
 clean::
 	@-if [ -d $(build_dir) ]; then rm -r $(build_dir); fi
 	$(call pass, "removed $(build_dir) directory")
+
+rescaffold:
+	$(call work, "updatating")
+	@cd $(base_dir); \
+		git fetch --all &> /dev/null; \
+		git pull --rebase origin master &> /dev/null; \
+	$(call pass, "scaffold updated")
