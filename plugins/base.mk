@@ -22,4 +22,5 @@ fail = @echo "  `tput setaf   1`×`tput sgr0` $1"
 default::
 
 clean::
-	-rm -r $(build_dir)
+	@-if [ -d $(build_dir) ]; then rm -r $(build_dir); fi
+	$(call pass, "removed $(build_dir) directory")

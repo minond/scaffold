@@ -75,4 +75,5 @@ js-test-coverage: js-mocha-coverage
 js-lint: js-complexity js-jshint js-jscs
 
 clean::
-	-rm -r node_modules
+	@-if [ -d node_modules ]; then rm -r node_modules; fi
+	$(call pass, "removed node_modules directory")
