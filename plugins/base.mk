@@ -1,22 +1,22 @@
 # scaffold directory structure
-BASE_DIR = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../
-CONFIG_DIR = $(BASE_DIR)/config
+base_dir = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../
+config_dir = $(base_dir)/config
 
 # project directory structure
-BUILD_DIR = build
-SOURCE_DIR = src
-TEST_DIR = test
+build_dir = build
+source_dir = src
+test_dir = test
 
 # standard packages and libs/bins
-NPM = npm
-NPM_BIN = `$(NPM) bin`
+npm = npm
+npm_bin = `$(npm) bin`
 
 # output helpers
 ok = ✔
 
-.PHONY: clean all
-
 default::
 
 clean::
-	-rm -r $(BUILD_DIR)
+	-rm -r $(build_dir)
+
+.PHONY: clean all

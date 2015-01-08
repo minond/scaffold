@@ -1,29 +1,26 @@
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 
-JS_TESTS_OUTPUT = $(BUILD_DIR)/tests/js/report
-JS_MOCHA_UNIT_TEST_FILES = $(TEST_DIR)/*_test.js
-JS_MOCHA_INTEGRATION_TEST_FILES = $(TEST_DIR)/integration/*.js
+js_tests_output = $(build_dir)/tests/js/report
+js_mocha_unit_test_files = $(test_dir)/*_test.js
+js_mocha_integration_test_files = $(test_dir)/integration/*.js
 
-JS_ISTANBUL_UNIT_TEST_FILES ?= $(JS_MOCHA_UNIT_TEST_FILES)
-JS_ISTANBUL_FLAGS ?= --report lcov --dir $(JS_TESTS_OUTPUT)
-JS_ISTANBUL_EXTRA_FLAGS ?=
+js_istanbul_unit_test_files ?= $(js_mocha_unit_test_files)
+js_istanbul_flags ?= --report lcov --dir $(js_tests_output)
+js_istanbul_extra_flags ?=
 
-JS_COMPLEXITY_FLAGS = --format markdown
-JS_COMPLEXITY_FILES = $(SOURCE_DIR)
+js_complexity_flags = --format markdown
+js_complexity_files = $(source_dir)
 
-JS_JSHINT_FLAGS = --config $(CONFIG_DIR)/jshintrc.json
-JS_JSHINT_FILES = $(SOURCE_DIR) $(TEST_DIR)
+js_jshint_flags = --config $(config_dir)/jshintrc.json
+js_jshint_files = $(source_dir) $(test_dir)
 
-JS_JSCS_FLAGS = --config $(CONFIG_DIR)/jscsrc.json --reporter inline
-JS_JSCS_EXTRA_FLAGS ?=
-JS_JSCS_FILES = $(SOURCE_DIR) $(TEST_DIR)
-JS_JSCS_REPORT_FILE = $(BUILD_DIR)/source/js/complexity.md
-
-.PHONY: js-complexity js-configure js-coveralls js-jscs js-jshint js-lint \
-    js-mocha js-mocha-coverage js-test js-test-coverage
+js_jscs_flags = --config $(config_dir)/jscsrc.json --reporter inline
+js_jscs_extra_flags ?=
+js_jscs_files = $(source_dir) $(test_dir)
+js_jscs_report_file = $(build_dir)/source/js/complexity.md
 
 js-configure:
-	$(NPM) i --save-dev istanbul@0.3.2 \
+	$(npm) i --save-dev istanbul@0.3.2 \
 		mocha@2.0.1 \
 		complexity-report@1.0.6 \
 		jshint@2.5.10 \
@@ -32,45 +29,48 @@ js-configure:
 
 # https://github.com/jscs-dev/node-jscs
 js-jscs:
-	@$(NPM_BIN)/jscs $(JS_JSCS_FLAGS) $(JS_JSCS_EXTRA_FLAGS) $(JS_JSCS_FILES)
+	@$(npm_bin)/jscs $(js_jscs_flags) $(js_jscs_extra_flags) $(js_jscs_files)
 	@echo $(ok) jscs
 
 # http://www.jshint.com/docs/
 js-jshint:
-	@$(NPM_BIN)/jshint $(JS_JSHINT_FLAGS) $(JS_JSHINT_FILES)
+	@$(npm_bin)/jshint $(js_jshint_flags) $(js_jshint_files)
 	@echo $(ok) jshint
 
 # http://jscomplexity.org/complexity
 js-complexity:
-	@$(NPM_BIN)/cr $(JS_COMPLEXITY_FLAGS) $(JS_COMPLEXITY_FILES) --silent
+	@$(npm_bin)/cr $(js_complexity_flags) $(js_complexity_files) --silent
 	@echo $(ok) js complexity
 
 js-complexity-report:
-	@$(NPM_BIN)/cr $(JS_COMPLEXITY_FLAGS) $(JS_COMPLEXITY_FILES) > $(JS_JSCS_REPORT_FILE)
+	@$(npm_bin)/cr $(js_complexity_flags) $(js_complexity_files) > $(js_jscs_report_file)
 	@echo $(ok) js complexity (report)
 
 # http://mochajs.org/
 js-mocha:
-	@$(NPM_BIN)/mocha $(JS_MOCHA_UNIT_TEST_FILES)
+	@$(npm_bin)/mocha $(js_mocha_unit_test_files)
 
 js-mocha-integration:
-	@$(NPM_BIN)/mocha --timeout 20000 $(JS_MOCHA_INTEGRATION_TEST_FILES)
+	@$(npm_bin)/mocha --timeout 20000 $(js_mocha_integration_test_files)
 
 # https://github.com/gotwarlost/istanbul
 js-mocha-coverage:
-	@$(NPM_BIN)/istanbul cover $(NPM_BIN)/_mocha \
-		$(JS_ISTANBUL_FLAGS) \
-		$(JS_ISTANBUL_EXTRA_FLAGS) \
-		-- $(JS_ISTANBUL_UNIT_TEST_FILES)
+	@$(npm_bin)/istanbul cover $(npm_bin)/_mocha \
+		$(js_istanbul_flags) \
+		$(js_istanbul_extra_flags) \
+		-- $(js_istanbul_unit_test_files)
 
 # https://coveralls.zendesk.com/hc/en-us
 # https://www.npmjs.org/package/coveralls
 js-coveralls:
-	cat $(JS_TESTS_OUTPUT)/lcov.info | $(NPM_BIN)/coveralls
+	cat $(js_tests_output)/lcov.info | $(npm_bin)/coveralls
 
 js-test: js-mocha
 js-test-coverage: js-mocha-coverage
 js-lint: js-complexity js-jshint js-jscs
 
 clean::
-	-rm -r $(BUILD_DIR) node_modules
+	-rm -r $(build_dir) node_modules
+
+.PHONY: js-complexity js-configure js-coveralls js-jscs js-jshint js-lint \
+    js-mocha js-mocha-coverage js-test js-test-coverage
