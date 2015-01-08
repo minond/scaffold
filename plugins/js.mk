@@ -19,6 +19,9 @@ js_jscs_extra_flags ?=
 js_jscs_files = $(source_dir) $(test_dir)
 js_jscs_report_file = $(build_dir)/source/js/complexity.md
 
+.PHONY: js-complexity js-configure js-coveralls js-jscs js-jshint js-lint \
+    js-mocha js-mocha-coverage js-test js-test-coverage
+
 js-configure:
 	$(npm) i --save-dev istanbul@0.3.2 \
 		mocha@2.0.1 \
@@ -70,7 +73,4 @@ js-test-coverage: js-mocha-coverage
 js-lint: js-complexity js-jshint js-jscs
 
 clean::
-	-rm -r $(build_dir) node_modules
-
-.PHONY: js-complexity js-configure js-coveralls js-jscs js-jshint js-lint \
-    js-mocha js-mocha-coverage js-test js-test-coverage
+	-rm -r node_modules

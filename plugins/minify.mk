@@ -1,6 +1,6 @@
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 
-.PHONY: minify-cofigure
+.PHONY: minify-configure
 
 jsmin = $(npm_bin)/jsmin
 cssmin = $(npm_bin)/cssmin

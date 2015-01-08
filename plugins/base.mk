@@ -15,9 +15,9 @@ npm_bin = `$(npm) bin`
 ok = "`tput setaf 150`  ✔`tput sgr0`"
 error = "`tput setaf 1`  ×`tput sgr0`"
 
+.PHONY: clean default
+
 default::
 
 clean::
 	-rm -r $(build_dir)
-
-.PHONY: clean all
