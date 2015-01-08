@@ -12,7 +12,8 @@ npm = npm
 npm_bin = `$(npm) bin`
 
 # output helpers
-ok = ✔
+ok = "`tput setaf 150`  ✔`tput sgr0`"
+error = "`tput setaf 1`  ×`tput sgr0`"
 
 default::
 
