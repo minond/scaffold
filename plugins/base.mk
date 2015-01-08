@@ -1,3 +1,5 @@
+SCAFFOLDED = 1
+
 # scaffold directory structure
 base_dir = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../
 config_dir = $(base_dir)/config

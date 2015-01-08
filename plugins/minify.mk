@@ -1,4 +1,6 @@
+ifneq ($(SCAFFOLDED), 1)
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
+endif
 
 .PHONY: minify-configure
 

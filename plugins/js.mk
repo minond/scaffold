@@ -1,4 +1,6 @@
+ifneq ($(SCAFFOLDED), 1)
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
+endif
 
 js_tests_output = $(build_dir)/tests/js/report
 js_mocha_unit_test_files = $(test_dir)/*_test.js
