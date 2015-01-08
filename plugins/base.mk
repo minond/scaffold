@@ -32,3 +32,15 @@ rescaffold:
 		git fetch --all &> /dev/null; \
 		git pull --rebase origin master &> /dev/null; \
 	$(call pass, "scaffold updated")
+
+help::
+	@echo "Scaffold v0.0.0"
+	@echo
+	@echo "base:"
+	@echo "  default                    # whatever you want it to do"
+	@echo "  clean                      # delete output files"
+	@echo "  rescaffold                 # update scaffold package to lastest version"
+	@echo
+	@echo "  \$$build_dir                 # name of build directory ($(build_dir))"
+	@echo "  \$$source_dir                # name of main source directory ($(source_dir))"
+	@echo "  \$$test_dir                  # name of tests directory ($(test_dir))"
