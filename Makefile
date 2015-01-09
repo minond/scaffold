@@ -1,27 +1,19 @@
-include plugins/base.mk
 include plugins/js.mk
 include plugins/minify.mk
 
-all:: check-versions
+default:: check-versions clean
 
-check-versions:
-	@$(MAKE) tmp clean
+check-versions: clean
 	@echo '{}' > package.json
-	@$(MAKE) js-configure
-	@$(MAKE) minify-configure
-	@$(NPM) install npm-check-updates
+	@$(MAKE) js-configure &> /dev/null
+	$(call pass, "js-configure")
+	@$(MAKE) minify-configure &> /dev/null
+	$(call pass, "minify-configure")
+	@$(npm) install npm-check-updates &> /dev/null
+	$(call pass, "npm-check-updates install")
+	@echo
 	cat package.json
-	$(NPM_BIN)/npm-check-updates
-	@$(MAKE) clean untmp
-
-tmp:
-	@mkdir .tmp
-	@cd .tmp
-
-untmp:
-	@cd ..
-	@if [ -d .tmp ]; then rm -r .tmp; fi
+	$(npm_bin)/npm-check-updates
 
 clean::
-	@if [ -d node_modules ]; then rm -r node_modules; fi
 	@if [ -f package.json ]; then rm package.json; fi
