@@ -69,21 +69,21 @@ js-configure:
 # https://github.com/jscs-dev/node-jscs
 js-jscs:
 	@$(npm_bin)/jscs $(js_jscs_flags) $(js_jscs_extra_flags) $(js_jscs_files)
-	@echo $(ok) jscs
+	$(call pass, "jscs")
 
 # http://www.jshint.com/docs/
 js-jshint:
 	@$(npm_bin)/jshint $(js_jshint_flags) $(js_jshint_files)
-	@echo $(ok) jshint
+	$(call pass, "jshint")
 
 # http://jscomplexity.org/complexity
 js-complexity:
 	@$(npm_bin)/cr $(js_complexity_flags) $(js_complexity_files) --silent
-	@echo $(ok) js complexity
+	$(call pass, "js complexity")
 
 js-complexity-report:
 	@$(npm_bin)/cr $(js_complexity_flags) $(js_complexity_files) > $(js_jscs_report_file)
-	@echo $(ok) js complexity (report)
+	$(call pass, "js complexity (report)")
 
 # http://mochajs.org/
 js-mocha:
