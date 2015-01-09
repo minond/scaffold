@@ -13,10 +13,10 @@ js_istanbul_extra_flags ?=
 js_complexity_flags = --format markdown
 js_complexity_files = $(source_dir)
 
-js_jshint_flags = --config $(config_dir)/jshintrc.json
+js_jshint_flags = --config $(scaffold_config_dir)/jshintrc.json
 js_jshint_files = $(source_dir) $(test_dir)
 
-js_jscs_flags = --config $(config_dir)/jscsrc.json --reporter inline
+js_jscs_flags = --config $(scaffold_config_dir)/jscsrc.json --reporter inline
 js_jscs_extra_flags ?=
 js_jscs_files = $(source_dir) $(test_dir)
 js_jscs_report_file = $(build_dir)/source/js/complexity.md
@@ -94,7 +94,7 @@ help::
 	@echo "  js-test                            # alias for js-mocha"
 	@echo "  js-test-coverage                   # alias for js-mocha-coverage"
 	@echo
-	@echo "  \$$js_tests_output                   # output command outs location ($(js_tests_output))"
+	@echo "  \$$js_tests_output                   # test coverage report location ($(js_tests_output))"
 	@echo "  \$$js_mocha_unit_test_files          # mocha unit tests glob ($(js_mocha_unit_test_files))"
 	@echo "  \$$js_mocha_integration_test_files   # mocha integration tests glob ($(js_mocha_integration_test_files))"
 	@echo "  \$$js_istanbul_unit_test_files       # mocha istanbul unit tests glob ($(js_istanbul_unit_test_files))"

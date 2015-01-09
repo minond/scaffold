@@ -1,8 +1,8 @@
 SCAFFOLDED = 1
 
 # scaffold directory structure
-base_dir = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../
-config_dir = $(base_dir)/config
+scaffold_base_dir = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../
+scaffold_config_dir = $(scaffold_base_dir)/config
 
 # project directory structure
 build_dir = build
@@ -28,7 +28,7 @@ clean::
 
 rescaffold:
 	$(call work, "updatating")
-	@cd $(base_dir); \
+	@cd $(scaffold_base_dir); \
 		git fetch --all &> /dev/null; \
 		git pull --rebase origin master &> /dev/null; \
 	$(call pass, "scaffold updated")
