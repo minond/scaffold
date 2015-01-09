@@ -14,7 +14,9 @@ pass = @echo "  `tput setaf 150`✔`tput sgr0`$1"
 fail = @echo "  `tput setaf   1`×`tput sgr0`$1"
 work = @echo "  `tput setaf 226`-`tput sgr0`$1"
 
-.PHONY: clean default
+.PHONY: clean default help
+
+default::
 
 help::
 	@echo "Scaffold v0.0.0"
@@ -27,8 +29,6 @@ help::
 	@echo "  \$$build_dir      # name of build directory ($(build_dir))"
 	@echo "  \$$source_dir     # name of main source directory ($(source_dir))"
 	@echo "  \$$test_dir       # name of tests directory ($(test_dir))"
-
-default::
 
 clean::
 	@-if [ -d $(build_dir) ]; then rm -r $(build_dir); fi
