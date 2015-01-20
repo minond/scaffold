@@ -2,8 +2,9 @@ ifneq ($(SCAFFOLDED), 1)
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 endif
 
-npm ?= npm
-npm_bin ?= `$(npm) bin`
+ifneq ($(SCAFFOLDED), 1)
+include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/npm.mk
+endif
 
 jsmin = $(npm_bin)/jsmin
 cssmin = $(npm_bin)/cssmin

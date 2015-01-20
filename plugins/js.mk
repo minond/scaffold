@@ -2,8 +2,9 @@ ifneq ($(SCAFFOLDED), 1)
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/base.mk
 endif
 
-npm ?= npm
-npm_bin ?= `$(npm) bin`
+ifneq ($(SCAFFOLDED_NPM), 1)
+include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/npm.mk
+endif
 
 js_tests_output = $(build_dir)/tests/js/report
 js_mocha_unit_test_files = $(test_dir)/*_test.js
