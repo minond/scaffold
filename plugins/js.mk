@@ -6,9 +6,12 @@ ifneq ($(SCAFFOLDED_NPM), 1)
 include $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/npm.mk
 endif
 
+SCAFFOLDED_JS = 1
+
 js_tests_output = $(build_dir)/tests/js/report
 js_mocha_unit_test_files = $(test_dir)/*_test.js
 js_mocha_integration_test_files = $(test_dir)/integration/*.js
+js_mocha_flags ?=
 
 js_istanbul_unit_test_files ?= $(js_mocha_unit_test_files)
 js_istanbul_flags ?= --report lcov --dir $(js_tests_output)
@@ -45,6 +48,7 @@ help::
 	@echo "  js-test-coverage                   # alias for js-mocha-coverage"
 	@echo
 	@echo "  \$$js_tests_output                   # test coverage report location ($(js_tests_output))"
+	@echo "  \$$js_mocha_flags                    # flags passed to mocha ($(js_mocha_flags))"
 	@echo "  \$$js_mocha_unit_test_files          # mocha unit tests glob ($(js_mocha_unit_test_files))"
 	@echo "  \$$js_mocha_integration_test_files   # mocha integration tests glob ($(js_mocha_integration_test_files))"
 	@echo "  \$$js_istanbul_unit_test_files       # mocha istanbul unit tests glob ($(js_istanbul_unit_test_files))"
@@ -88,10 +92,10 @@ js-complexity-report:
 
 # http://mochajs.org/
 js-mocha:
-	@$(npm_bin)/mocha $(js_mocha_unit_test_files)
+	@$(npm_bin)/mocha $(js_mocha_flags) $(js_mocha_unit_test_files)
 
 js-mocha-integration:
-	@$(npm_bin)/mocha --timeout 20000 $(js_mocha_integration_test_files)
+	@$(npm_bin)/mocha --timeout 20000 ($js_mocha_flags) $(js_mocha_integration_test_files)
 
 # https://github.com/gotwarlost/istanbul
 js-mocha-coverage:
