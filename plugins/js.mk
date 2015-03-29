@@ -102,7 +102,7 @@ js-mocha-coverage:
 	@$(npm_bin)/istanbul cover $(npm_bin)/_mocha \
 		$(js_istanbul_flags) \
 		$(js_istanbul_extra_flags) \
-		-- $(js_istanbul_unit_test_files)
+		-- $(js_mocha_flags) $(js_istanbul_unit_test_files)
 
 # https://coveralls.zendesk.com/hc/en-us
 # https://www.npmjs.org/package/coveralls
