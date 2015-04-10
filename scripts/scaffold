@@ -25,5 +25,9 @@ case "$1" in
         case "$2" in
             html) file:html ;;
         esac
-    ;;
+        ;;
+
+    this)
+        git submodule add http://github.com/minond/scaffold .scaffold
+        ;;
 esac
